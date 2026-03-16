@@ -26,14 +26,14 @@ public class App {
      */
     public static void main(String[] args) {
  
-        // ── Singleton: one championship instance ──────────────────────────
+        // Singleton: one championship instance 
         ChampionshipManager manager = ChampionshipManager.getInstance();
  
-        // ── Cars (Dependency Inversion: typed as abstract RallyCar) ───────
+        // Cars (Dependency Inversion: typed as abstract RallyCar) 
         RallyCar gravelCar  = new GravelCar("Toyota",  "GR Yaris", 380);
         RallyCar asphaltCar = new AsphaltCar("Hyundai", "i20 N",   360);
  
-        // ── Drivers ────────────────────────────────────────────────────────
+        // Drivers
         Driver ogier    = new Driver("Sébastien Ogier",   "France",  gravelCar);
         Driver rovanpera = new Driver("Kalle Rovanperä",  "Finland", gravelCar);
         Driver tanak    = new Driver("Ott Tänak",         "Estonia", asphaltCar);
@@ -44,7 +44,7 @@ public class App {
         manager.registerDriver(tanak);
         manager.registerDriver(neuville);
  
-        // ── Rally Finland ──────────────────────────────────────────────────
+        // Rally Finland
         RallyRaceResult rallyFinland = new RallyRaceResult("Rally Finland (Jyväskylä)");
         rallyFinland.recordResult(ogier,     1);
         rallyFinland.recordResult(tanak,     2);
@@ -52,7 +52,7 @@ public class App {
         rallyFinland.recordResult(neuville,  4);
         manager.addRace(rallyFinland);
  
-        // ── Monte Carlo Rally ──────────────────────────────────────────────
+        // Monte Carlo Rally
         RallyRaceResult monteCarlo = new RallyRaceResult("Monte Carlo Rally (Monaco)");
         monteCarlo.recordResult(rovanpera, 1);
         monteCarlo.recordResult(neuville,  2);
@@ -60,7 +60,7 @@ public class App {
         monteCarlo.recordResult(tanak,     4);
         manager.addRace(monteCarlo);
  
-        // ── Championship Standings ─────────────────────────────────────────
+        // Championship Standings
         System.out.println("===== CHAMPIONSHIP STANDINGS =====");
         int pos = 1;
         for (Driver d : manager.getStandings()) {
@@ -69,12 +69,12 @@ public class App {
                     + d.getTotalPoints() + " points");
         }
  
-        // ── Championship Leader ────────────────────────────────────────────
+        // Championship Leader
         System.out.println("\n===== CHAMPIONSHIP LEADER =====");
         Driver leader = manager.getLeader();
         System.out.println(leader.getName() + " with " + leader.getTotalPoints() + " points");
  
-        // ── Championship Statistics ────────────────────────────────────────
+        // Championship Statistics
         System.out.println("\n===== CHAMPIONSHIP STATISTICS =====");
         System.out.println("Total Drivers: "   + ChampionshipManager.getTotalDrivers());
         System.out.println("Total Races: "     + ChampionshipManager.getTotalRaces());
@@ -88,7 +88,7 @@ public class App {
         int totalPoints = ChampionshipStatistics.totalChampionshipPoints(manager.getDrivers());
         System.out.println("Total Championship Points: " + totalPoints);
  
-        // ── Race Results ───────────────────────────────────────────────────
+        // Race Results
         System.out.println("\n===== RACE RESULTS =====");
         for (RaceResult race : manager.getRaces()) {
  
@@ -109,7 +109,7 @@ public class App {
             System.out.println();
         }
  
-        // ── Car Performance Ratings ────────────────────────────────────────
+        //Car Performance Ratings
         System.out.println("===== CAR PERFORMANCE RATINGS =====");
         System.out.println("Gravel Car Performance:  " + gravelCar.calculatePerformance());
         System.out.println("Asphalt Car Performance: " + asphaltCar.calculatePerformance());
